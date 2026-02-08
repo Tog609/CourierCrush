@@ -7,9 +7,11 @@ public class TimerSystem : MonoBehaviour
 
     private int _timerCount = 90;
 
+    public int timerCountToShow;
+
     private int _tickInterval = 1;
 
-    [SerializeField] private GameObject _endGamePanel;
+    [SerializeField] private EndGamePanelScripts _endGamePanel;
     public int TimerCount
     {
         get { return _timerCount; }
@@ -20,27 +22,32 @@ public class TimerSystem : MonoBehaviour
     {
           StartCoroutine(GetTimer());
           ShowTimer();
+
     }
     private IEnumerator GetTimer()
     {
+        timerCountToShow = 0;
+
         while (_timerCount > 0)
         {
             yield return new WaitForSeconds(_tickInterval);
+
             _timerCount--;
+            timerCountToShow++;
+
             ShowTimer();
         }
+
         EndGame();
     }
     private void ShowTimer()
     {
         _timertext.text = $"Timer : {_timerCount}";
     }
-    private void EndGame()
+    public void EndGame()
     {
-        if (_timerCount == 0)
-        {
-            _endGamePanel.SetActive(true);
-            Time.timeScale = 0f;
-        }
+        _endGamePanel.gameObject.SetActive(true);
+        _endGamePanel.ShowText();
+        Time.timeScale = 0f;
     }
 }

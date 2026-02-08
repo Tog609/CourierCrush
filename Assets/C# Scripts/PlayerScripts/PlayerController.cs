@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float _speed = 10f;
+    public float speed;
     [SerializeField] private float _jumpForce = 5f;
 
     private float _horizontalAxis;
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 move = new Vector3(_horizontalAxis, 0f, _verticalAxis).normalized;
-        _rb.MovePosition(_rb.position + move * _speed * Time.fixedDeltaTime);
+        _rb.MovePosition(_rb.position + move * speed * Time.fixedDeltaTime);
     }
 
     private void OnCollisionStay(Collision collision)
