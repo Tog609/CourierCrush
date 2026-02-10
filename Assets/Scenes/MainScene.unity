@@ -11849,12 +11849,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _car: {fileID: 7329271459446847610, guid: 94937d9616918604683568c841e92098, type: 3}
-  _spawnPosA: {x: 70.67531, y: 1.34, z: -12.2}
-  _spawnPosB: {x: -69.7, y: 1.34, z: -9.6}
-  _rotationA: {x: 0, y: 180, z: 0}
-  _rotationB: {x: 0, y: 0, z: 0}
+  _spawnPoints:
+  - position: {x: 70.9, y: 1.4, z: -9.81}
+    rotation: {x: 0, y: 180, z: 0}
+  - position: {x: -69.56373, y: 1.4, z: -12.2}
+    rotation: {x: 0, y: 0, z: 0}
+  - position: {x: 69.43, y: 1.4, z: -37.92}
+    rotation: {x: 0, y: 180, z: 0}
   _spawnInterval: 2
-  _lifeTime: 16
+  _lifeTime: 12.5
 --- !u!4 &1556098202 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4039670145424470552, guid: f06c40dfb4591ed4c93af5ba6ef4093e, type: 3}
