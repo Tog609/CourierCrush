@@ -1,19 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
+public struct SpawnPoint
+{
+    public Vector3 position;
+    public Vector3 rotation;
+}
+
 public class CarManagerSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject _car;
 
-    [SerializeField] private Vector3 _spawnPosA;
-    [SerializeField] private Vector3 _spawnPosB;
-
-    [SerializeField] private Vector3 _rotationA;
-    [SerializeField] private Vector3 _rotationB;
+    [SerializeField] private SpawnPoint[] _spawnPoints;
 
     [SerializeField] private float _spawnInterval = 3f;
-    [SerializeField]
-    private float _lifeTime = 16f;
+    [SerializeField] private float _lifeTime = 16f;
 
     private void Start()
     {
@@ -31,13 +33,11 @@ public class CarManagerSpawner : MonoBehaviour
 
     private void SpawnCars()
     {
-        Quaternion rotA = Quaternion.Euler(_rotationA);
-        Quaternion rotB = Quaternion.Euler(_rotationB);
-
-        GameObject carA = Instantiate(_car, _spawnPosA, rotA);
-        GameObject carB = Instantiate(_car, _spawnPosB, rotB);
-
-        Destroy(carA, _lifeTime);
-        Destroy(carB, _lifeTime);
+        foreach (var point in _spawnPoints)
+        {
+            Quaternion rot = Quaternion.Euler(point.rotation);
+            GameObject car = Instantiate(_car, point.position, rot);
+            Destroy(car, _lifeTime);
+        }
     }
 }
