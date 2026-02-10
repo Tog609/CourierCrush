@@ -2,7 +2,12 @@
 
 public class GetSuperPower : MonoBehaviour
 {
-    public CharactersAvailabilities superPower;
+    [SerializeField] private CharactersAvailabilities superPower;
+
+    private void Update()
+    {
+        Rotate();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,5 +20,9 @@ public class GetSuperPower : MonoBehaviour
             }
             Destroy(gameObject); 
         }
+    }
+    private void Rotate()
+    {
+        transform.Rotate(0, 100f * Time.deltaTime, 0);
     }
 }

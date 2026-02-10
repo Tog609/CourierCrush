@@ -5,9 +5,9 @@ using UnityEngine.UIElements;
 
 public class ObstacleHitImplementation : MonoBehaviour
 {
-    [SerializeField] private TimeManagement _timerManager ;
+     private TimeManagement _timerManager ;
 
-    [SerializeField] private TimerSystem _timerSystem;
+     private TimerSystem _timerSystem;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))  
@@ -15,4 +15,10 @@ public class ObstacleHitImplementation : MonoBehaviour
             _timerSystem.TimerCount -= _timerManager.ReduceTimeByHittingObstacle();
         }
     }
+    private void Awake()
+    {
+        if (!_timerManager) _timerManager = FindObjectOfType<TimeManagement>();
+        if (!_timerSystem) _timerSystem = FindObjectOfType<TimerSystem>();
+    }
+
 }
