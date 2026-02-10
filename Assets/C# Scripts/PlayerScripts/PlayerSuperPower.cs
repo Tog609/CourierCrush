@@ -7,7 +7,6 @@ public class PlayerSuperPower : MonoBehaviour
 
     //private PlayerController _controller;
 
-    [Header("Teleport Settings")]
     public KeyCode teleportKey = KeyCode.R;
 
     public Vector3 teleportTarget;
@@ -28,7 +27,6 @@ public class PlayerSuperPower : MonoBehaviour
     public void TeleportTo(Vector3 targetPosition)
     {
         transform.position = targetPosition;
-        Debug.Log("Teleported to: " + targetPosition);
     }
 
     public void GivePower(CharactersAvailabilities power)

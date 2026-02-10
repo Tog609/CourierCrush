@@ -17,8 +17,8 @@ public class ObstacleHitImplementation : MonoBehaviour
     }
     private void Awake()
     {
-        if (!_timerManager) _timerManager = FindObjectOfType<TimeManagement>();
-        if (!_timerSystem) _timerSystem = FindObjectOfType<TimerSystem>();
+           _timerManager = FindObjectOfType<TimeManagement>();
+           _timerSystem = FindObjectOfType<TimerSystem>();
     }
 
 }

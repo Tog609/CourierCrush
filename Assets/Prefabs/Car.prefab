@@ -335,6 +335,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 11
+  _speedStep: 0.3
+  _interval: 5
 --- !u!114 &-60549833104531595
 MonoBehaviour:
   m_ObjectHideFlags: 0
